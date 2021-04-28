@@ -1,0 +1,8 @@
+.container-fluid{
+    padding: 20px;
+    text-align: center;
+    color:#641E16 ;
+    background-color:#F08080;
+    border-bottom: 10px #CD5C5C;
+    box-shadow: 5px 5px rgb(0, 0, 0); 
+}
