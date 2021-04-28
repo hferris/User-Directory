@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import API from "./utils/api";
+import api from "./utils/api";
 import NavBar from "./components/NavBar/NavBar";
 
 class App extends React.Component {
@@ -11,13 +11,13 @@ class App extends React.Component {
   }
 
   getEmployees = async () => {
-    const { data } = await API.getUsers();
+    const { data } = await api.getUsers();
     const employees = data.results.map((item) => ({
+      image: item.picture.large,
       name: `${item.name.first} ${item.name.last}`,
       gender: item.gender,
       email: item.email,
       phone: item.phoneNum,
-      image: item.picture.large,
     }));
     this.setState({ employees });
   };
@@ -27,8 +27,8 @@ class App extends React.Component {
     this.setState({ search: value });
   };
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
+  handleFormSubmit = (event) => {
+    event.preventDefault();
     this.getEmployees(this.state.search)
       .then((res) => {
         if (res.data.status === "error") {
