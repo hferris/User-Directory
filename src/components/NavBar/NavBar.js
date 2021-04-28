@@ -13,7 +13,7 @@ function NavBar() {
           placeholder="Search"
           onChange={(event) => context.handleSearchChange(event)}
         />
-        <button className="btn my-2 my-sm-0" type="submit">
+        <button className="btn btn-outline-success" type="submit">
           Search
         </button>
       </form>
