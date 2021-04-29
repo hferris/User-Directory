@@ -68,7 +68,7 @@ class App extends React.Component {
           handleInputChange={this.handleInputChange}
           employees={[1, 2, 3]}
         />
-        <div className="">
+        <div className="card2">
           <div className="">
             {this.state.employees.length === 0 ? (
               <h2> !Let's Try again!</h2>
