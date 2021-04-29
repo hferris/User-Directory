@@ -2,7 +2,7 @@
 # Here is the screenshot below :star_struck:
 ![Alt text](/./public/imgs/Snap.Shot.png?raw=true "Screenshot")
 
-# Check it out here: "link here"
+# Check it out here: https://keen-kare-199f92.netlify.app
 
 <img src="https://img.shields.io/badge/License-IPL%201.0-blue.svg"></img>
 
