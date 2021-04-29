@@ -5,7 +5,7 @@ function Header() {
     return (
       <header className="card">
         <h1>User Directory</h1>
-        <h4>Find your employee below</h4>
+        <h5>Find company employees below</h5>
       </header>
     );
   }
