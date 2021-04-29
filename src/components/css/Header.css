@@ -1,8 +1,16 @@
-.container-fluid{
+.card{
     padding: 20px;
+    background-color: rgb(192, 65, 154);
     text-align: center;
-    color:#641E16 ;
-    background-color:#F08080;
-    border-bottom: 10px #CD5C5C;
-    box-shadow: 5px 5px rgb(0, 0, 0); 
+    font-family:serif;
+    font-style:normal;
+    border: 3px solid rgb(0, 0, 0);
+    
+    
+
+    
+    
+
+    
+  
 }
