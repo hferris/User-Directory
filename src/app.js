@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "./components/Header/Header";
 import api from "./utils/api";
 import NavBar from "./components/NavBar/NavBar";
-import Header from "./components/Header/Header";
 
 class App extends React.Component {
-  state = {search: '', employees: [], 
+  state = {
+    search: "",
+    employees: [],
   };
 
   componentDidMount() {
@@ -25,7 +27,6 @@ class App extends React.Component {
 
   handleInputChange = (event) => {
     const value = event.target.value;
-    // const name = e.target.name;
     this.setState({ search: value });
   };
 
@@ -33,12 +34,13 @@ class App extends React.Component {
     event.preventDefault();
     this.getEmployees(this.state.search)
       .then((res) => {
-        if (res.data.status === 'error') {
+        if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
-        this.setState({ results: res.data.message, error: '' });
+
+        this.setState({ results: res.data.message, error: "" });
       })
-      .catch((err) => this.setState({ error: err.message }));
+      .catch((error) => this.setState({ error: error.message }));
   };
 
   filterEmployees = (employee) => {
@@ -65,36 +67,27 @@ class App extends React.Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
           employees={[1, 2, 3]}
-          
         />
-        <div className=''>
-          <div className=''>
+        <div className="">
+          <div className="">
             {this.state.employees.length === 0 ? (
-              <h2>!Let's Try Again!</h2>
+              <h2> !Let's Try again!</h2>
             ) : (
               this.state.employees
                 .filter(this.filterEmployees)
                 .map((employee) => (
-                  <ul className=''>
-                    <li className=''>
+                  <div>
+                    <div>
                       <img src={employee.image} alt={employee.name} />
-                    </li>
-                    <li className=''>
-                      {employee.name}
-                    </li>
+                    </div>
+                    <div>{employee.name}</div>
 
-                    <li className=''>
-                      {employee.phone}
-                    </li>
+                    <div>{employee.phone}</div>
 
-                    <li className=''>
-                      {employee.email}
-                    </li>
+                    <div>{employee.email}</div>
 
-                    <li className=''>
-                      {employee.gender}
-                    </li>
-                  </ul>
+                    <div>{employee.gender}</div>
+                  </div>
                 ))
             )}
           </div>
