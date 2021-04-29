@@ -16,6 +16,12 @@ function NavBar(props) {
           ))}
           ;
         </datalist>
+        <button
+          onClick={props.handleFormSubmit}
+          className="card3"
+        >
+          Search
+        </button>
       </form>
     </div>
   );
