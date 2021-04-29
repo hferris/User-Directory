@@ -1,21 +1,21 @@
 import React from "react";
-import context from "react-bootstrap/esm/AccordionContext";
 import "../css/NavBar.css";
 
-function NavBar() {
+function NavBar(props) {
   return (
-    <div className="NavBar">
-      <form className="form-inline">
+    <div>
+      <form>
         <input
-          className="form-control mr-sm-2"
-          aria-label="Search"
-          type="search"
           placeholder="Search"
-          onChange={(event) => context.handleSearchChange(event)}
+          value={props.search}
+          onChange={props.handleInputChange}
         />
-        <button className="btn btn-outline-success" type="submit">
-          Search
-        </button>
+        <datalist id="employees">
+          {props.employees.map((employee) => (
+            <option value={employee} key={employee} />
+          ))}
+          ;
+        </datalist>
       </form>
     </div>
   );

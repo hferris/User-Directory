@@ -1,13 +1,6 @@
 .navbar {
-    padding: 20px 25px;
+    padding: 20px 20px;
     margin: 0 auto;
-
 }
 
-.btn{
-color: rgb(0, 0, 0);
-font-style: italic;
-font-family:serif;
-font-style:normal;
-border: 2px solid rgb(0, 0, 0);
-}
+
