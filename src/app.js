@@ -1,10 +1,11 @@
 import React from "react";
-import Header from "./components/Header/Header";
 import api from "./utils/api";
 import NavBar from "./components/NavBar/NavBar";
+import Header from "./components/Header/Header";
 
 class App extends React.Component {
-  state = { search: "", employees: [] };
+  state = {search: '', employees: [], 
+  };
 
   componentDidMount() {
     this.getEmployees();
@@ -13,17 +14,18 @@ class App extends React.Component {
   getEmployees = async () => {
     const { data } = await api.getUsers();
     const employees = data.results.map((item) => ({
-      image: item.picture.large,
       name: `${item.name.first} ${item.name.last}`,
-      gender: item.gender,
       email: item.email,
-      phone: item.phoneNum,
+      phone: item.cell,
+      image: item.picture.large,
+      gender: item.gender,
     }));
     this.setState({ employees });
   };
 
-  handleInputChange = (e) => {
-    const value = e.target.value;
+  handleInputChange = (event) => {
+    const value = event.target.value;
+    // const name = e.target.name;
     this.setState({ search: value });
   };
 
@@ -31,25 +33,25 @@ class App extends React.Component {
     event.preventDefault();
     this.getEmployees(this.state.search)
       .then((res) => {
-        if (res.data.status === "error") {
+        if (res.data.status === 'error') {
           throw new Error(res.data.message);
         }
-        this.setState({ results: res.data.message, err: "" });
+        this.setState({ results: res.data.message, error: '' });
       })
-      .catch((err) => this.setState({ err: err.message }));
+      .catch((err) => this.setState({ error: err.message }));
   };
 
   filterEmployees = (employee) => {
     if (employee.name.includes(this.state.search)) {
       return true;
     }
-    if (employee.gender.includes(this.state.search)) {
+    if (employee.phone.includes(this.state.search)) {
       return true;
     }
     if (employee.email.includes(this.state.search)) {
       return true;
     }
-    if (employee.phone.includes(this.state.search)) {
+    if (employee.gender.includes(this.state.search)) {
       return true;
     }
     return false;
@@ -63,40 +65,34 @@ class App extends React.Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
           employees={[1, 2, 3]}
+          
         />
-        <div className="container-fluid">
-          <div className="row align-items-center">
-            <p className="col">Image</p>
-            <p className="col">First Name & Last Name</p>
-            <p className="col">Gender</p>
-            <p className="col">Email</p>
-            <p className="col">Phone Number</p>
-          </div>
-          <div className="container-fluid w-100">
+        <div className=''>
+          <div className=''>
             {this.state.employees.length === 0 ? (
-              <h2> Let's Try Again!</h2>
+              <h2>!Let's Try Again!</h2>
             ) : (
               this.state.employees
                 .filter(this.filterEmployees)
                 .map((employee) => (
-                  <ul className="list-group list-group-horizontal w-100">
-                    <li className="list-group-item">
+                  <ul className=''>
+                    <li className=''>
                       <img src={employee.image} alt={employee.name} />
                     </li>
-                    <li className="list-group-item flex-fill">
+                    <li className=''>
                       {employee.name}
                     </li>
 
-                    <li className="list-group-item flex-fill">
-                      {employee.gender}
+                    <li className=''>
+                      {employee.phone}
                     </li>
 
-                    <li className="list-group-item flex-fill">
+                    <li className=''>
                       {employee.email}
                     </li>
 
-                    <li className="list-group-item flex-fill">
-                      {employee.phone}
+                    <li className=''>
+                      {employee.gender}
                     </li>
                   </ul>
                 ))
